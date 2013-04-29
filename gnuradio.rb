@@ -2,9 +2,11 @@ require 'formula'
 
 class Gnuradio < Formula
   homepage 'http://gnuradio.org'
-  url  'http://gnuradio.org/releases/gnuradio/gnuradio-3.6.1.tar.gz'
-  sha1 'ee4c40b366d94887511eefa6ce52df4bdbc9d105'
-  head 'git://gnuradio.org/gnuradio.git'
+#  url  'http://gnuradio.org/releases/gnuradio/gnuradio-3.6.1.tar.gz'
+#  sha1 'ee4c40b366d94887511eefa6ce52df4bdbc9d105'
+  url  'http://gnuradio.org/releases/gnuradio/gnuradio-3.6.4.1.tar.gz'
+  sha1 '218fc6ef38a59d6c22a0dc80400d70ac3595cc3b'
+#  head 'git://gnuradio.org/gnuradio.git'
 
   depends_on 'apple-gcc42' => :build
   depends_on 'cmake' => :build
@@ -79,7 +81,8 @@ class Gnuradio < Formula
       args << "-DPYTHON_PACKAGES_PATH='#{lib}/#{which_python}/site-packages'"
 
       system 'cmake', '..', *args
-      system 'make'
+      #system 'make VERBOSE=1 -j1'
+      system 'make VERBOSE=1'
       system 'make install'
     end
   end
